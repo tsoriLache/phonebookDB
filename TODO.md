@@ -1,0 +1,13 @@
+- [ ] **A - Node + Express**
+	- [ ]	1 - GET /api/persons
+		- [ ] `npm start` script
+		- [ ] `npm run dev` script
+		- [ ] return dummy data JSON
+	- [ ] 2	- GET /info
+		- [ ]
+	- [ ] 3 - GET /api/persons/<id>
+	- [ ] 4 - DELETE /api/persons/<id>
+	- [ ]	5-6 - POST /api/persons 
+- [ ] **B - Deployment**
+- [ ] **C - MongoDB**
+- [ ] **D - Validation + ESLint**
