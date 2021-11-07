@@ -6,7 +6,9 @@
   - [ ] 2 - GET /info
     - [ ] returns a page with the numbers of phones
     - [ ] the date of request
-  - [ ] 3 - GET /api/persons/<id> - [ ] responed with specific data - [ ] handle not found with 404
+  - [ ] 3 - GET /api/persons/<id>
+    - [ ] responed with specific data
+    - [ ] handle not found with 404
   - [ ] 4 - DELETE /api/persons/<id>
     - [ ] should be able to delete
     - [ ] 204 for good
