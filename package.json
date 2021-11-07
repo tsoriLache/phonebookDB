@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./server/server.js",
+    "dev": "nodemon ./server/server.js",
     "test": "jest"
   },
   "repository": {
@@ -17,7 +19,9 @@
   },
   "homepage": "https://github.com/noamgolani/phonebookDB#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "jest": "^27.2.5",
