@@ -11,6 +11,8 @@ const HandleShowNumber = async({target})=>{
   const contactData = (await axios.get(`/api/persons/${contactElem.getAttribute('data-id')}`)).data;
   contactElem.append(createElement( 'button',['X'],['delete-btn','close'],{},{'click':deleteContacts}))
   contactElem.after(createElement('p' ,[contactData.number],['phone-number']))
+  contactElem.removeEventListener('click',HandleShowNumber)
+  contactElem.addEventListener('click',renderAllContacts)
 }
 
 const cleanContactList = ()=>{
