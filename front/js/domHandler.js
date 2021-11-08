@@ -21,20 +21,22 @@ const cleanContactList = ()=>{
     contactsList.removeChild(contactsList.lastChild);
   }
 }
-
-const renderAllContacts = async()=>{
-    cleanContactList();
-    const contacts = (await axios.get("/api/persons")).data.sort((a, b) => b.name.localeCompare(a.name))
-    ;
+const appendContacts = async()=>{
+  const contacts = (await axios.get("/api/persons")).data.sort((a, b) => b.name.localeCompare(a.name));
     contacts.forEach(({name,id})=> {
-      console.log(id);
         const imgElem = createElement('img' ,[],["contact-img"],{src:"./img/contacts-icon.jpeg" ,alt:"🙎‍♂️"})
         const nameElem = createElement('p' ,[`${name}`],['h4' ,'contact-name'])
         const contactElem = createElement('button',[imgElem,nameElem],['list-group-item', 'list-group-item-action'],{type:'button','data-id':id},{'click':HandleShowNumber})
         document.getElementById('add-contact-btn').after(contactElem)
     });
 }
+
+const renderAllContacts = ()=>{
+    cleanContactList();
+    appendContacts();
+}
 renderAllContacts();
+
 
 function createElement(tagName ,children = [], classes = [],attributes = {},eventListeners = {}) {
     const el = document.createElement(tagName);

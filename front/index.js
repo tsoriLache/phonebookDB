@@ -16,8 +16,9 @@ const HandleAddContacts = (e)=>{
     toggleForm();
 }
 
-const deleteContacts = async({target})=>{
-    const id = target.parentElement.getAttribute('data-id');
+const deleteContacts = async(e)=>{
+    e.stopPropagation();
+    const id = e.target.parentElement.getAttribute('data-id');
     console.log(id);
     await axios.delete(`/api/persons/${id}`, { data: { answer: 42 } });
     renderAllContacts();
