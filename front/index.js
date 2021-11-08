@@ -16,5 +16,14 @@ const HandleAddContacts = (e)=>{
     toggleForm();
 }
 
+const deleteContacts = async({target})=>{
+    const id = target.parentElement.getAttribute('data-id');
+    console.log(id);
+    await axios.delete(`/api/persons/${id}`, { data: { answer: 42 } });
+    renderAllContacts();
+}
+
 document.getElementById('add-contact-btn').addEventListener('click',toggleForm)
 document.getElementById('add-contact-submit').addEventListener('click',HandleAddContacts)
+
+export {deleteContacts}

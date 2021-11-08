@@ -7,7 +7,7 @@
 }
 .list-group-item {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 4fr 1fr;
 }
 .contact-name {
   display: flex;
@@ -26,6 +26,7 @@ body {
   width: 50%;
   height: 70vh;
   overflow: overlay;
+  min-width: 20pc;
 }
 
 .container::-webkit-scrollbar {
@@ -34,4 +35,9 @@ body {
 
 .hide {
   display: none;
+}
+
+.phone-number {
+  background-color: rgba(255, 255, 255, 0.76);
+  text-align: center;
 }

@@ -9,7 +9,7 @@ router.get('/', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
-    const id = Number(request.params.id);
+    const id = (request.params.id);
     if(getSingle(id)){
         response.json(getSingle(id))
     }else{
@@ -19,7 +19,7 @@ router.get('/:id', (request, response) => {
 })
 
 router.delete('/:id', (request, response) => {
-    const id = Number(request.params.id);
+    const id = (request.params.id);
     if(getSingle(id)){
         deleteSingle(id)
         response.status(204).end()

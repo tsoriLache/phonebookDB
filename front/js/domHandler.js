@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {deleteContacts} from '../index'
 
 const toggleForm = ()=>{
     document.getElementById('add-contact-form').classList.toggle('hide');
@@ -8,16 +9,26 @@ const toggleForm = ()=>{
 const HandleShowNumber = async({target})=>{
   const contactElem = target.closest('button');
   const contactData = (await axios.get(`/api/persons/${contactElem.getAttribute('data-id')}`)).data;
-  contactElem.innerText +=(`\t${contactData.number}`)
+  contactElem.append(createElement( 'button',['X'],['delete-btn','close'],{},{'click':deleteContacts}))
+  contactElem.after(createElement('p' ,[contactData.number],['phone-number']))
+}
+
+const cleanContactList = ()=>{
+  const contactsList = document.getElementById('contact-list');
+  while (contactsList.childNodes.length > 2) {
+    contactsList.removeChild(contactsList.lastChild);
+  }
 }
 
 const renderAllContacts = async()=>{
-    const contacts = (await axios.get("/api/persons")).data;
-    console.log(contacts);
+    cleanContactList();
+    const contacts = (await axios.get("/api/persons")).data.sort((a, b) => b.name.localeCompare(a.name))
+    ;
     contacts.forEach(({name,id})=> {
+      console.log(id);
         const imgElem = createElement('img' ,[],["contact-img"],{src:"./img/contacts-icon.jpeg" ,alt:"🙎‍♂️"})
         const nameElem = createElement('p' ,[`${name}`],['h4' ,'contact-name'])
-        const contactElem = createElement('button',[imgElem,nameElem],['list-group-item', 'list-group-item-action'],{type:'button','data-id':`${id}`},{'click':HandleShowNumber})
+        const contactElem = createElement('button',[imgElem,nameElem],['list-group-item', 'list-group-item-action'],{type:'button','data-id':id},{'click':HandleShowNumber})
         document.getElementById('add-contact-btn').after(contactElem)
     });
 }
