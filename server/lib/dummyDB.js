@@ -24,6 +24,7 @@ function init(){
     "number": "39-23-6423122"
   }]
 }
+init()
 
 function getAll(){
     return contacts;
