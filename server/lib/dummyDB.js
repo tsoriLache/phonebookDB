@@ -1,4 +1,3 @@
-const { search } = require("superagent");
 const { v4: uuidv4 } = require('uuid');
 
 let contacts = []
