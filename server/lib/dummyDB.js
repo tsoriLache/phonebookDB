@@ -48,6 +48,7 @@ function addContact(name,number){
                     number
                   };
   contacts.push(contact)
+  console.log(contacts);
 }
 
 function isNameExist(name){
