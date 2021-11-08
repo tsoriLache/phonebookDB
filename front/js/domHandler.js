@@ -10,7 +10,7 @@ const HandleShowNumber = async({target})=>{
   const contactElem = target.closest('button');
   const contactData = (await axios.get(`/api/persons/${contactElem.getAttribute('data-id')}`)).data;
   contactElem.append(createElement( 'button',['X'],['delete-btn','close'],{},{'click':deleteContacts}))
-  contactElem.after(createElement('p' ,[contactData.number],['phone-number']))
+  contactElem.after(createElement('p' ,[contactData.number],['phone-number','h3']))
   contactElem.removeEventListener('click',HandleShowNumber)
   contactElem.addEventListener('click',renderAllContacts)
 }
