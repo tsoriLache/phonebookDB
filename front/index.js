@@ -3,7 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import "./style.css";
 import "./js/domHandler.js"
 import axios from 'axios';
-import {toggleForm,renderAllContacts} from "./js/domHandler.js";
+import {toggleForm,renderAllContacts,clearInputs} from "./js/domHandler.js";
+
+renderAllContacts();
 
 const HandleAddContacts = (e)=>{
     e.preventDefault();
@@ -12,6 +14,7 @@ const HandleAddContacts = (e)=>{
         number: document.getElementById('contact-number').value,
         // img:document.getElementById('contact-img').value
     })
+    clearInputs();
     renderAllContacts();
     toggleForm();
 }

@@ -35,7 +35,11 @@ const renderAllContacts = ()=>{
     cleanContactList();
     appendContacts();
 }
-renderAllContacts();
+
+const clearInputs = ()=>{
+  document.getElementById('contact-name').value = "";
+  document.getElementById('contact-number').value = "";
+}
 
 
 function createElement(tagName ,children = [], classes = [],attributes = {},eventListeners = {}) {
@@ -59,5 +63,5 @@ function createElement(tagName ,children = [], classes = [],attributes = {},even
     return el;
   }
 
-  export {toggleForm,renderAllContacts}
+  export {toggleForm,renderAllContacts,clearInputs}
 
