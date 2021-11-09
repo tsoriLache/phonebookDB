@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const {getAll,getSingle,deleteSingle} = require('../lib/dummyDB');
+const {getSingle} = require('../lib/dummyDB');
 // const {isNumberValid} = require('../helpers/validation');
 const Contact = require('../models/contact');
 
-router.get('/', (request, response) => {
-    response.json(getAll())
+router.get('/', async(request, response) => {
+    response.json(await Contact.find({}))
 })
 
 router.get('/:id', (request, response) => {
