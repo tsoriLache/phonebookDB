@@ -1,6 +1,6 @@
 function isNumberValid(number){
     const arrNumber = number.split("");
-    arrNumber.splice(3,1);
+    arrNumber.splice(3,1);      //remove the '-' from array.
     return( number.length===11 &&
             number.slice(3,4)==='-' && 
             arrNumber.every(digit => digit>=0&&digit<=9) &&

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const personsRouter = require('./routers/persons_router')
+const personsRouter = require('./routers/personsRouter.js')
+const infoRouter = require('./routers/infoRouter.js')
 const {getLength} = require('./lib/dummyDB');
 const morgan = require('morgan');
 const path = require('path');
@@ -14,6 +15,7 @@ morgan.token('body', req => {
 app.use(morgan(':method :url :status - :response-time ms :body'))
 
 app.use('/api/persons',personsRouter)
+app.use('/info',infoRouter)
 
 app.get('/info', (request, response) => {
     response.send(`Phonebook has info for ${getLength()} people\n ${new Date().toString()}`)
