@@ -1,30 +1,30 @@
-const { search } = require("superagent");
 const { v4: uuidv4 } = require('uuid');
 
 let contacts = []
 
 function init(){
   contacts = [{ 
-    "id": 1,
+    "id": '1',
     "name": "Arto Hellas", 
     "number": "040-123456"
   },
   { 
-    "id": 2,
+    "id": '2',
     "name": "Ada Lovelace", 
     "number": "39-44-5323523"
   },
   { 
-    "id": 3,
+    "id": '3',
     "name": "Dan Abramov", 
     "number": "12-43-234345"
   },
   { 
-    "id": 4,
+    "id": '4',
     "name": "Mary Poppendieck", 
     "number": "39-23-6423122"
   }]
 }
+init()
 
 function getAll(){
     return contacts;
@@ -35,6 +35,7 @@ function getLength(){
 }
 
 function getSingle(id){
+  console.log(contacts);
   return contacts.find(contact => contact.id === id)
 }
 
@@ -48,6 +49,7 @@ function addContact(name,number){
                     number
                   };
   contacts.push(contact)
+  console.log(contacts);
 }
 
 function isNameExist(name){
