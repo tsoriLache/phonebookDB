@@ -18,12 +18,12 @@ router.get('/:id', (request, response) => {
     }
 })
 
-router.delete('/:id', (request, response) => {
+router.delete('/:id', async(request, response) => {
     const id = (request.params.id);
-    if(getSingle(id)){
-        deleteSingle(id)
+    try{
+        await Contact.findOneAndRemove({id})
         response.status(204).end()
-    }else{
+    }catch{
         response.status(400);
         response.send('id is not found');
     }
