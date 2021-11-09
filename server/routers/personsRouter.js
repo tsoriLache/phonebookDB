@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const {getSingle} = require('../lib/dummyDB');
 // const {isNumberValid} = require('../helpers/validation');
 const Contact = require('../models/contact');
 
@@ -8,11 +7,11 @@ router.get('/', async(request, response) => {
     response.json(await Contact.find({}))
 })
 
-router.get('/:id', (request, response) => {
+router.get('/:id', async(request, response) => {
     const id = (request.params.id);
-    if(getSingle(id)){
-        response.json(getSingle(id))
-    }else{
+    try{
+        response.json(await Contact.find({id}))
+    }catch{
         response.status(400);
         response.send('id is not found');
     }
