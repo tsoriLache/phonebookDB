@@ -5,6 +5,7 @@ const infoRouter = require('./routers/infoRouter.js')
 const {getLength} = require('./lib/dummyDB');
 const morgan = require('morgan');
 const path = require('path');
+const Contacts = require('./models/contact.js')
 
 app.use(express.json());
 
