@@ -29,19 +29,17 @@ router.delete('/:id', async (request, response) => {
 });
 
 router.post('/', async (request, response) => {
-    const {name,number} = request.body;
-    if(name&&number){   //add number validation
-        if(await Contact.count({name})===0){
-            const contact = new Contact({name,number});
-            await contact.save();
-            response.json(`contact added!`);
-        }else{
-            response.status(400);
-            response.send('The name already exists in the phonebook');
-        }
-    }else{
-        response.status(400);
-        response.send('The name or number is missing');
+  ///need try&catch?
+  const { name, number } = request.body;
+  if (name && number) {
+    //add number validation
+    const contact = new Contact({ name, number });
+    if ((await Contact.count({ name })) === 0) {
+      await contact.save();
+      response.json(`contact added!`);
+    } else {
+      await Contact.findOneAndUpdate({ name }, { name, number });
+      response.json(`contact updated!`);
     }
   } else {
     response.status(400);
